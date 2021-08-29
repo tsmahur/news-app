@@ -1,12 +1,12 @@
 import React, { Component } from 'react'
 import Navbar from './component/Navbar'
 import News from './component/News'
+import NewsScroll from './component/NewsScroll'
 import {
   BrowserRouter as Router,
   Switch,
   Route,
   Redirect,
-  // Link
 } from "react-router-dom";
 import PageNotFound from "./component/PageNotFound"
 
@@ -15,7 +15,7 @@ export default class App extends Component {
   constructor() {
     super();
 
-    this.newsConfigData = { ///initial config for all
+    this.newsConfigData = { //initial config for all
       pageSize: 9,
       category: 'general',
       country: 'in',
@@ -54,7 +54,8 @@ export default class App extends Component {
             <Route exact path="/" render={()=>(<Redirect to="/general"/>)}></Route>
 
             {/* not passing the category */}
-            <Route exact path="/all"><News key="all" resource={"everything"} category={"all"} newsConfigData={this.state.newsConfigData} /></Route>
+            <Route exact path="/all"><NewsScroll key="all" resource={"everything"} category={"all"} newsConfigData={this.state.newsConfigData} /></Route>
+            {/* <Route exact path="/all"><News key="all" resource={"everything"} category={"all"} newsConfigData={this.state.newsConfigData} /></Route> */}
 
             <Route exact path="/general"><News key="general"  category={'general'} newsConfigData={this.state.newsConfigData} /></Route>
 

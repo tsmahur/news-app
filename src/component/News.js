@@ -3,6 +3,7 @@ import NewsItem from './NewsItem'
 import SampleOutput from '../SampleOutput.json'
 import Spinner from './Spinner'
 import PropTypes from 'prop-types'
+// import NewsScroll from './NewsScroll'
 
 export default class News extends Component {
 
@@ -20,7 +21,11 @@ export default class News extends Component {
       this.state = {
          isLoading: false,
          country: this.props.newsConfigData.country, //to compare the changes value
-         page: this.props.newsConfigData.page //first time only
+         page: this.props.newsConfigData.page, //first time only
+         response: {
+            articles:[],
+            totalResults:0
+         }
       };
 
       //setting title
@@ -88,6 +93,10 @@ export default class News extends Component {
    }
 
    render() {
+      // if(this.props.resource === 'everything') return (
+      //    <NewsScroll key="all" resource={"everything"} category={"all"} newsConfigData={this.props.newsConfigData} />)
+
+      // else 
       return (
          <div className="container my-3">
             <h2 className="text-center" style={{ margin: '20px 0px' }}>News - Top {this.capitalize(this.props.category)} Headlines</h2>
